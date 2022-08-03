@@ -52,30 +52,37 @@ class MyAppState extends State<MyApp> {
                               edgeStyle: LinearEdgeStyle.endCurve),
                         ],
                       ),
-                      Text("Virus Probability"),
+                      Text("Hack Probability"),
                     ],
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () async {
-                      await player.setAsset("assets/audio/cow.mp3");
-                      player.play();
-                    },
-                    child: const Text('Cow'),
+              ElevatedButton(
+                style: TextButton.styleFrom(backgroundColor: Colors.red),
+                onPressed: () async {
+                  await player.setAsset(
+                      "assets/audio/urcomputerishacked.mp3");
+                  await player.setVolume(1);
+                  player.play();
+                },
+                child: Container(
+                  margin: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      SfLinearGauge(
+                        barPointers: const [
+                          LinearBarPointer(
+                              animationType: LinearAnimationType.bounceOut ,
+                              enableAnimation: true,
+                              value: 10,
+                              thickness: 10,
+                              edgeStyle: LinearEdgeStyle.endCurve),
+                        ],
+                      ),
+                      Text("Phone Security"),
+                    ],
                   ),
-                  const SizedBox(width: 10),
-                  ElevatedButton(
-                    onPressed: () async {
-                      await player.setAsset("assets/audio/horse.mp3");
-                      player.play();
-                    },
-                    child: const Text('Horse'),
-                  ),
-                ],
+                ),
               ),
             ],
           ),

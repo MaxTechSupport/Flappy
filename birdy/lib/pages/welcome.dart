@@ -30,8 +30,7 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration(milliseconds: 500), () async {
-      await player.setAsset("assets/audio/110percent.mp3");
-      player.setVolume(1);
+      await player.setAsset("assets/audio/hellosir.mp3");
       player.play();
     });
     return Scaffold(
@@ -112,11 +111,14 @@ class _WelcomePageState extends State<WelcomePage> {
                                   const Color.fromARGB(255, 246, 127, 85),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50))),
-                          onPressed: () {
+                          onPressed: () async {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => MyApp()));
+                            await player
+                                .setAsset("assets/audio/110percent.mp3");
+                            player.play();
                           },
                           child: Container(
                               padding: const EdgeInsets.all(20),
